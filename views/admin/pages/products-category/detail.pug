@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug
+
+
+block main 
+    if(data.title)
+        h1(class="mb-4") #{data.title}
+
+    if(data.thumbnail)
+        div(class="mb-4") 
+            img(
+                src=data.thumbnail, 
+                style= "width: 100px"
+                )
+    if(data.status)
+        div(class="mb-4") Trạng thái: 
+            if(data.status == "active")
+                span(class="badge badge-success") Hoạt động
+            else 
+                span(class="badge badge-danger") Dừng hoạt động
+
+    if(data.position)
+        div(class="mb-4") Vị trí: <b>#{data.position}</b>
+
+    if(data.description)
+        div(class="mb-4") !{data.description} 
+
+    a(
+        href=`${prefixAdmin}/products-category/edit/${data.id}`
+        class="btn btn-warning btn-sm"
+        ) Chỉnh sửa
+    
+    script(src="/admin/js/product.js") 
+    
